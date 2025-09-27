@@ -106,7 +106,7 @@ Thank you, <@${userId}>, for giving away **${prize}**! If you are drawn as a win
 
 If you win, please contact <@${userId}>, not me!!`;
 
-      const code = `/start ${duration}, ${prize}, ${winners}, <@${userId}> `;
+      const code = `/start duration:${duration} prize:${prize} winners:${winners} host:${userId} `;
 
       document.getElementById('paragraph').value = paragraph;
       document.getElementById('code').value = code;
