@@ -71,7 +71,6 @@
   <div class="container">
     <div class="left-panel">
       <input id="userId" type="text" placeholder="user 18 digit id">
-      <input id="nickname" type="text" placeholder="nickname">
       <input id="prize" type="text" placeholder="prize name">
       <input id="duration" type="text" placeholder="duration (e.g. 2d)">
       <input id="winners" type="number" placeholder="# of winners" min="1" max="5">
@@ -86,12 +85,11 @@
   <script>
     function generateGiveaway() {
       const userId = document.getElementById('userId').value.trim();
-      const nickname = document.getElementById('nickname').value.trim();
       const prize = document.getElementById('prize').value.trim();
       const duration = document.getElementById('duration').value.trim();
       let winners = parseInt(document.getElementById('winners').value.trim(), 10);
 
-      if (!userId || !nickname || !prize || !duration || !winners) {
+      if (!userId || !prize || !duration || !winners) {
         alert("Please fill in all fields.");
         return;
       }
@@ -102,7 +100,7 @@
       }
 
       const paragraph = `## ✨ __${prize}!!__ ✨
-Thank you, <@${userId}>, for giving away **${prize}**! If you are drawn as a winner, you have 24 hours to message ${nickname} to claim your prize. Do **__NOT__** message them unless you are the winner. Thank you, ${nickname}, once again for the generosity! Good luck to all who enter!
+Thank you, <@${userId}>, for giving away **${prize}**! If you are drawn as a winner, you have 24 hours to message ${userID} to claim your prize. Do **__NOT__** message them unless you are the winner. Thank you, ${userID}, once again for the generosity! Good luck to all who enter!
 
 If you win, please contact <@${userId}>, not me!!`;
 
