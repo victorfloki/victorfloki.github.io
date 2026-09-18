@@ -13,6 +13,7 @@
       display: flex;
       justify-content: center;
     }
+
     .container {
       display: grid;
       grid-template-columns: 200px 300px;
@@ -23,11 +24,13 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       max-width: 100%;
     }
+
     .left-panel, .right-panel {
       display: flex;
       flex-direction: column;
       gap: 15px;
     }
+
     input, textarea, button {
       padding: 12px;
       border: 1px solid #ccc;
@@ -36,22 +39,23 @@
       width: 100%;
       box-sizing: border-box;
     }
+
     textarea {
       resize: none;
       min-height: 120px;
     }
+
     #paragraph {
       min-height: 220px;
     }
-    #code {
-      min-height: 100px;
-    }
+
     button {
       background: navy;
       color: white;
       border: none;
       cursor: pointer;
     }
+
     button:hover {
       background: #000066;
     }
@@ -61,56 +65,63 @@
       body {
         padding: 10px;
       }
+
       .container {
         grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
+
     <div class="left-panel">
-      <input id="userId" type="text" placeholder="user 18 digit id">
-      <input id="prize" type="text" placeholder="prize name">
-      <input id="duration" type="text" placeholder="duration (e.g. 2d)">
-      <input id="winners" type="number" placeholder="# of winners" min="1" max="5">
+      <input
+        id="userId"
+        type="text"
+        placeholder="user 18 digit id"
+      >
+
+      <input
+        id="prize"
+        type="text"
+        placeholder="prize name"
+      >
+
       <button id="submitBtn">Submit</button>
     </div>
+
     <div class="right-panel">
-      <textarea id="paragraph" readonly>paragraph will appear here</textarea>
-      <textarea id="code" readonly>giveaway code will appear here</textarea>
+      <textarea
+        id="paragraph"
+        readonly
+      >paragraph will appear here</textarea>
     </div>
+
   </div>
 
   <script>
     function generateGiveaway() {
       const userId = document.getElementById('userId').value.trim();
       const prize = document.getElementById('prize').value.trim();
-      const duration = document.getElementById('duration').value.trim();
-      let winners = parseInt(document.getElementById('winners').value.trim(), 10);
 
-      if (!userId || !prize || !duration || !winners) {
+      if (!userId || !prize) {
         alert("Please fill in all fields.");
         return;
-      }
-
-      if (winners > 5) {
-        winners = 5;
-        alert("The number of winners cannot exceed 5. It has been capped at 5.");
       }
 
       const paragraph = `## ✨ __${prize}!!__ ✨
 Thank you to <@${userId}> for giving away **${prize}**! 
 
-If you are drawn as a winner, __**contact <@${userId}>, not me**__!! You have 24 hours to message them to claim your prize. __**DO NOT**__ message them unless you are the winner. Good luck to everyone who enters!`;
-
-      const code = `/start duration:${duration} prize:${prize} winners:${winners} host:${userId} `;
+If you are drawn as a winner, __**contact <@${userId}>, not me**__!! You have 24 hours to message them to claim their prize. __**DO NOT**__ message them unless you are the winner. Good luck to everyone who enters!`;
 
       document.getElementById('paragraph').value = paragraph;
-      document.getElementById('code').value = code;
     }
 
-    document.getElementById('submitBtn').addEventListener('click', generateGiveaway);
+    document
+      .getElementById('submitBtn')
+      .addEventListener('click', generateGiveaway);
   </script>
 </body>
 </html>
