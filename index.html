@@ -46,7 +46,7 @@
     }
 
     #paragraph {
-      min-height: 220px;
+      min-height: 280px;
     }
 
     button {
@@ -78,6 +78,12 @@
 
     <div class="left-panel">
       <input
+        id="username"
+        type="text"
+        placeholder="username"
+      >
+
+      <input
         id="userId"
         type="text"
         placeholder="user 18 digit id"
@@ -103,18 +109,22 @@
 
   <script>
     function generateGiveaway() {
+      const username = document.getElementById('username').value.trim();
       const userId = document.getElementById('userId').value.trim();
       const prize = document.getElementById('prize').value.trim();
 
-      if (!userId || !prize) {
+      if (!username || !userId || !prize) {
         alert("Please fill in all fields.");
         return;
       }
 
       const paragraph = `## ✨ __${prize}!!__ ✨
-Thank you to <@${userId}> for giving away **${prize}**! 
+Thank you to [${username}](https://discord.com/users/${userId}) for giving away **${prize}**! 
 
-If you are drawn as a winner, __**contact <@${userId}>, not me**__!! You have 24 hours to message them to claim their prize. __**DO NOT**__ message them unless you are the winner. Good luck to everyone who enters!`;
+## If you are drawn as a winner, __**contact [${username}](https://discord.com/users/${userId}), not me**__!!
+> ‼️**THE HOST MENTIONED BELOW IS __NOT__ THE SPONSOR! CONTACT THE SPONSOR MENTIONED ABOVE!**
+
+You have 24 hours to message them to claim their prize. __**DO NOT**__ message them unless you are the winner. Good luck to everyone who enters!`;
 
       document.getElementById('paragraph').value = paragraph;
     }
