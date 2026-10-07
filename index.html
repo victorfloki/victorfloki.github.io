@@ -46,7 +46,7 @@
     }
 
     #paragraph {
-      min-height: 280px;
+      min-height: 320px;
     }
 
     button {
@@ -60,7 +60,7 @@
       background: #000066;
     }
 
-    /* --- Mobile Responsive --- */
+    /*Mobile Layout*/
     @media (max-width: 600px) {
       body {
         padding: 10px;
@@ -118,12 +118,15 @@
         return;
       }
 
-      const paragraph = `## ✨ __${prize}!!__ ✨
-Thank you to [**${username}**](<https://discord.com/users/${userId}>) for giving away **${prize}**!
-## If you are drawn as a winner, __**contact [${username}](https://<discord.com/users/${userId}>), not me**__!!
-> ‼️**THE HOST MENTIONED BELOW IS __NOT__ THE SPONSOR! CONTACT THE SPONSOR BY CLICKING ON THEIR NAME ABOVE!**
+      const paragraph = `## ✨ __${prize}__ ✨
+## Sponsored by: [${username}](<https://discord.com/users/${userId}>)
 
-You have 24 hours to message them to claim their prize. __**DO NOT**__ message them unless you are the winner. Good luck to everyone who enters!`;
+Thank you [${username}](<https://discord.com/users/${userId}>) for giving away **${prize}**!
+
+If you are drawn as a winner, __**contact the sponsor: [${username}](<https://discord.com/users/${userId}>)**__!! (NOT the person who is listed as the host below!)
+‼️Click on the name of the sponsor to open their profile!
+
+You have 24 hours to message them to claim your prize. __**DO NOT**__ message them unless you are the winner. Good luck to everyone who enters!`;
 
       document.getElementById('paragraph').value = paragraph;
     }
